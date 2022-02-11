@@ -1,13 +1,15 @@
 const Joi = require('joi');
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 
 const userinfo = require('./routes/api');
 
 const app = express();
 const port = 3000;
 
-const connectionString = 'mongodb://127.0.0.1:27017/userinfo'
+const connectionString = 'mongodb://localhost:27017/users'
 
 mongoose.connect(connectionString, {
   "useNewUrlParser": true,
@@ -25,6 +27,9 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log("DB connected")
 });
+
+
+app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
