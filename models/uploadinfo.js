@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const uploadinfoSchema = new mongoose.Schema({
     price:Number,
     productType:String,
-    description:String,
+    description:String
 
 
 

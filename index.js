@@ -10,7 +10,8 @@ const uploadinfo = require('./routes/uploadinfo');
 const app = express();
 const port = 3000;
 
-const connectionString = 'mongodb://localhost:27017/users'
+const connectionString = 'mongodb://localhost:27017/users';
+
 
 mongoose.connect(connectionString, {
   "useNewUrlParser": true,
@@ -37,6 +38,5 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/userinfo', userinfo);
 app.use('/uploadinfo', uploadinfo);
-
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
